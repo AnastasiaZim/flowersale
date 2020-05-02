@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="914ceeb9-b9a9-4a67-8874-4525311090e0" name="flowersale" url="http://45.84.224.17">
+        <fileTransfer host="45.84.224.17" port="22" rootFolder="/home/admin/web/flowersale/public" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
