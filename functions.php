@@ -16,9 +16,10 @@ function getDataBaseConnection()
     return $connection;
 }
 
+session_start();
+
 function show($s)
 {
-    session_start();
     ?>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -39,8 +40,10 @@ function show($s)
         if (isset($_SESSION['user'])) {
             $user = $_SESSION['user'];
             ?>
-            Вы вошли как <?= $user['name']?>
-            <a href="/unlogin.php"><button class="buttonIn">Выйти</button></a>
+            Вы вошли как <?= $user['name'] ?>
+            <a href="/unlogin.php">
+                <button class="buttonIn">Выйти</button>
+            </a>
             <?php
         } else {
             ?>
@@ -53,10 +56,26 @@ function show($s)
     <div class="container-fluid c2">
         <div class="row">
             <div class="col-2 c22">
-                <p><a href="index.php"><h5> Главная </h5></a></p>
-                <p><a href="catalog.php"><h5> Каталог </h5></a></p>
-                <p><a href="registration.php"><h5> Регистрация </h5></a></p>
-                <p><a href="selfBox.php"><h5> Личный кабинет </h5></a></p>
+                <a href="index.php">
+                    <h5> Главная </h5>
+                </a>
+                <a href="catalog.php">
+                    <h5> Каталог </h5>
+                </a>
+                <?php
+                if (!isset($_SESSION['user'])) {
+                    ?>
+
+                    <a href="registration.php">
+                        <h5> Регистрация </h5>
+                    </a>
+
+                    <?php
+                }
+                ?>
+                <a href="selfBox.php">
+                    <h5> Личный кабинет </h5>
+                </a>
             </div>
             <div class="col c23">
                 <?php echo $s ?>
@@ -76,7 +95,8 @@ function drawModal()
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span>
                     </button>
                     <h4 class="modal-title" id="myModalLabel">Вход на сайт</h4>
                 </div>
@@ -96,4 +116,14 @@ function drawModal()
     <?php
 }
 
-
+function getFullPrice($basket)
+{
+    $sumPriceCount = 0;
+    foreach ($basket as $basketItem) {
+        $product = $basketItem['product'];
+        $count = $basketItem['count'];
+        $PriceCount = $product['Price'] * $count;
+        $sumPriceCount += $PriceCount;
+    }
+    return $sumPriceCount;
+}

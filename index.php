@@ -18,9 +18,7 @@ function sst()
     ?>
     <h1>Главная</h1>
     <br>
-    <!---->
-    <div id="result_form"></div>
-    <!---->
+
     <?php
     return ob_get_clean();
 }

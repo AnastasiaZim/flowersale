@@ -30,15 +30,16 @@ body {
 
 .c22 a {
     color: white;
-    weight: 100%;
 }
 
-.c22 p {
+.c22 h5 {
     border-bottom: 1px solid #000;
     text-align: center;
-    height: 25px;
+    padding: 20px 0 20px 0;
 }
-
+.c23{
+    min-height: 410px;
+}
 .c23 h1 {
 
     text-align: center;
@@ -53,16 +54,22 @@ body {
     flex: 0 0 auto;
 }
 
-.modal-header{
+.modal-header {
     display: block;
 }
-.buttonIn{
+
+.buttonIn {
     cursor: pointer;
     height: 24px;
     color: azure;
     background-color: grey;
     border: 1px solid #000;
 }
-.product{
-    padding:40px;
+
+.product {
+    padding: 40px;
+}
+.basket{
+    margin:10px;
+    background-color: darkgrey;
 }

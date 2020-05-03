@@ -42,12 +42,7 @@ function sst()
     }
     ?>
     </div>
-    <!---->
-    <div id="result_form"></div>
-    <!---->
     <?php
-    if (isset($_SESSION['user'])) {
-    }
     return ob_get_clean();
 }
 
