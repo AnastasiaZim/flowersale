@@ -99,3 +99,29 @@ function deleteBasketItem(basketItemId) {
     document.cookie = "basket=" + JSON.stringify(basket);
     document.location.reload();
 }
+
+function deleteProduct(id) {
+    $.ajax({
+            url: '/delete.php', //url страницы (action_ajax_form.php)
+            type: "POST", //метод отправки
+            dataType: "html", //формат данных
+            data: {id: id},
+            success: function () { //Данные отправлены успешно
+                document.location.reload();
+            }
+        }
+    );
+}
+
+function createProduct(){
+    $.ajax({
+            url: '/action_edit.php', //url страницы (action_ajax_form.php)
+            type: "POST", //метод отправки
+            dataType: "html", //формат данных
+            data: $("#edit_form").serialize(),  // Сеарилизуем объект
+            success: function () { //Данные отправлены успешно
+                document.location.href="/editor.php";
+            }
+        }
+    );
+}
