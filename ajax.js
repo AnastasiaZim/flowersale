@@ -69,7 +69,7 @@ function addProductToCookie(product) {
     }
     else {
         basket = JSON.parse(basket);
-        if (productId in basket) {
+        if (productId in basket && basket[productId] != null) {
             basket[productId]['count']++;
         }
         else {

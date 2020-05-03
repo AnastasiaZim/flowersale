@@ -26,7 +26,7 @@ function sst()
         <div class="container-fluid basket">
             <div class="row">
                 <div class="col-2">Название</div>
-                <div class="col-2">Кольчество</div>
+                <div class="col-2">Количество</div>
                 <div class="col-2">Цена</div>
                 <div class="col-2">Стоимость</div>
                 <div class="col-2">Удалить</div>
@@ -36,24 +36,27 @@ function sst()
         $sumCount = 0;
         $sumPriceCount = 0;
         foreach ($basket as $basketItem) {
-            $product = $basketItem['product'];
-            $count = $basketItem['count'];
-            $PriceCount = $product['Price'] * $count;
-            $sumCount += $count;
-            $sumPriceCount += $PriceCount;
-            ?>
-            <div class="container-fluid basket">
-                <div class="row">
-                    <div class="col-2"><?= $product['ProductName'] ?></div>
-                    <div class="col-2"><?= $product['Price'] ?></div>
-                    <div class="col-2"><?= $count ?></div>
-                    <div class="col-2"><?= $PriceCount ?></div>
-                    <div class="col-2" onclick="deleteBasketItem(<?=$product['id']?>)">x</div>
+            if($basketItem!=null){
+                $product = $basketItem['product'];
+                $count = $basketItem['count'];
+                $PriceCount = $product['Price'] * $count;
+                $sumCount += $count;
+                $sumPriceCount += $PriceCount;
+                ?>
+                <div class="container-fluid basket">
+                    <div class="row">
+                        <div class="col-2"><?= $product['ProductName'] ?></div>
+                        <div class="col-2"><?= $product['Price'] ?></div>
+                        <div class="col-2"><?= $count ?></div>
+                        <div class="col-2"><?= $PriceCount ?></div>
+                        <div class="col-2" onclick="deleteBasketItem(<?=$product['id']?>)">x</div>
+                    </div>
                 </div>
-            </div>
 
 
-            <?php
+                <?php
+            }
+
         }
         ?>
         <br>
